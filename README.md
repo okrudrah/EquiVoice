@@ -1,0 +1,79 @@
+# EquiVoice
+
+EquiVoice is a research project investigating whether accent-specific adaptation can improve automatic speech recognition for Arabic-accented English on unseen speakers without substantially degrading recognition of native English.
+
+The project combines speaker-independent machine-learning evaluation with phonetic analysis of Arabic-to-English transfer patterns. It is being developed incrementally; no performance results are available yet.
+
+## Research question
+
+Can accent-specific adaptation improve Whisper's recognition of Arabic-accented English on unseen speakers without substantially degrading recognition of native English, and are any measured improvements concentrated around predictable L1 phonetic-transfer phenomena?
+
+## Planned experimental design
+
+- Use the four verified Arabic L1 speakers in L2-ARCTIC: ABA, SKA, YBAA, and ZHAA.
+- Run four leave-one-speaker-out folds, adapting on three speakers and testing on the unseen fourth speaker.
+- Compare the same held-out speech under pretrained and adapted Whisper models.
+- Evaluate both models on a native-English control subset from LibriSpeech.
+- Save utterance-level predictions and analyze recognition errors alongside L2-ARCTIC's pronunciation annotations where the evidence supports that linkage.
+- Report per-speaker and aggregate results, including negative or mixed findings.
+
+## Current status
+
+- [x] Reproducible Python 3.12 environment and dependency lock
+- [x] Local Apple Silicon/MPS availability verified
+- [x] Official L2-ARCTIC documentation reviewed
+- [x] Arabic speaker IDs, file counts, annotations, structure, and license documented
+- [ ] Licensed dataset acquisition and extracted-file validation
+- [ ] Preprocessing and immutable fold manifests
+- [ ] Pretrained Whisper baseline
+- [ ] Accent-specific adaptation
+- [ ] Native-English control evaluation
+- [ ] Linguistic error analysis
+
+No dataset audio, model checkpoints, predictions, or measured results are currently included.
+
+## Verified dataset documentation
+
+See [L2-ARCTIC dataset verification](docs/l2_arctic_dataset_verification.md) for:
+
+- release-version distinctions
+- exact Arabic speaker and utterance counts
+- annotation semantics
+- expected directory structure
+- licensing and acquisition constraints
+- leave-one-speaker-out implications
+- limitations and post-download validation requirements
+
+## Repository structure
+
+```text
+EquiVoice/
+├── data/          # local-only datasets; ignored by Git
+├── docs/          # research and dataset documentation
+├── results/       # future lightweight metrics and metadata
+├── src/equivoice/ # future maintainable project code
+└── tests/         # future automated tests
+```
+
+## Environment
+
+EquiVoice currently targets Python 3.12. The exact verified local environment is recorded in `requirements-lock.txt`; direct project dependencies are listed in `requirements.txt`.
+
+```bash
+python3.12 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-lock.txt
+python -m pip check
+```
+
+Platform-specific training environments, including any later cloud-GPU environment, will be recorded separately rather than assumed to match the Apple Silicon lock file.
+
+## Data access and licensing
+
+L2-ARCTIC is distributed by the Texas A&M PSI Lab under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Access requires reviewing and accepting the official terms through the [L2-ARCTIC corpus page](https://psi.engr.tamu.edu/l2-arctic-corpus/).
+
+The corpus itself is not redistributed in this repository. A license for EquiVoice's future original source code has not yet been selected.
+
+## Results
+
+No baseline, fine-tuned, control, or linguistic-analysis results have been measured yet. This section will be updated only after the corresponding experiments are run and verified.
