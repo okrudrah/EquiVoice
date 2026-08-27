@@ -24,7 +24,8 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Official L2-ARCTIC documentation reviewed
 - [x] Arabic speaker IDs, file counts, annotations, structure, and license documented
 - [x] Licensed dataset acquisition and extracted-file validation
-- [ ] Preprocessing and immutable fold manifests
+- [x] Immutable leave-one-speaker-out fold manifests
+- [ ] Audio preprocessing
 - [ ] Pretrained Whisper baseline
 - [ ] Accent-specific adaptation
 - [ ] Native-English control evaluation
@@ -46,6 +47,10 @@ See [L2-ARCTIC dataset verification](docs/l2_arctic_dataset_verification.md) for
 
 See [L2-ARCTIC raw-data validation](docs/l2_arctic_raw_validation.md) for the
 measured file correspondence, audio properties, durations, and validation caveats.
+
+See [Experimental splits](docs/experimental_splits.md) for the frozen
+leave-one-speaker-out folds, prompt-grouped validation policy, exact split sizes,
+and leakage controls.
 
 ## Repository structure
 
@@ -76,6 +81,25 @@ zero errors. The machine-readable report records one caution category: 39 ABA
 recordings contain one or more full-scale PCM samples. Those files remain in the
 corpus because this is a clipping indicator, not proof that the recordings are
 unusable.
+
+## Experimental split manifests
+
+Each fold places one complete speaker in the test split and uses only the other
+three speakers for training and validation. A stable SHA-256 rule assigns about
+10% of prompt IDs to validation; every recording of the same prompt stays in the
+same train/validation split. This avoids train/validation prompt overlap while
+keeping the test speaker completely sealed.
+
+```bash
+PYTHONPATH=src python -m equivoice.build_loso_manifests \
+  --source-manifest results/data_validation/l2_arctic_v5_arabic_manifest.csv \
+  --validation-report results/data_validation/l2_arctic_v5_arabic_validation.json \
+  --output-dir results/manifests/l2_arctic_v5_loso
+```
+
+The four content-hashed manifests and their summary are under
+`results/manifests/l2_arctic_v5_loso/`. Regeneration is deterministic, and the
+builder refuses to overwrite an existing manifest with different content.
 
 ## Environment
 

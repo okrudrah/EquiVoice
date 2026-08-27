@@ -1,0 +1,335 @@
+{
+  "cohort": "Arabic L1 scripted speech",
+  "dataset": "L2-ARCTIC",
+  "folds": [
+    {
+      "fold_id": "held_out_aba",
+      "held_out_speaker": "ABA",
+      "manifest": "fold_aba.csv",
+      "manifest_sha256": "c2c6fa15785919c4bedf7e7494ad30955d968a5ce26a4ef9d31643d0fd8e66e2",
+      "splits": {
+        "test": {
+          "duration_hours": 1.262864,
+          "duration_seconds": 4546.309591837,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 4546.309591837,
+              "utterances": 1129
+            },
+            "SKA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "YBAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "ZHAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            }
+          },
+          "utterances": 1129
+        },
+        "train": {
+          "duration_hours": 2.844088,
+          "duration_seconds": 10238.717369616,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "SKA": {
+              "duration_seconds": 2829.785147395,
+              "utterances": 886
+            },
+            "YBAA": {
+              "duration_seconds": 3949.717006805,
+              "utterances": 1028
+            },
+            "ZHAA": {
+              "duration_seconds": 3459.215215416,
+              "utterances": 1030
+            }
+          },
+          "utterances": 2944
+        },
+        "validation": {
+          "duration_hours": 0.278222,
+          "duration_seconds": 1001.598276641,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "SKA": {
+              "duration_seconds": 278.626780044,
+              "utterances": 88
+            },
+            "YBAA": {
+              "duration_seconds": 383.751519275,
+              "utterances": 102
+            },
+            "ZHAA": {
+              "duration_seconds": 339.219977322,
+              "utterances": 102
+            }
+          },
+          "utterances": 292
+        }
+      }
+    },
+    {
+      "fold_id": "held_out_ska",
+      "held_out_speaker": "SKA",
+      "manifest": "fold_ska.csv",
+      "manifest_sha256": "0108cacb0cf08e7125f604e05a654d3d850a37748f0c645c7492682329ca410a",
+      "splits": {
+        "test": {
+          "duration_hours": 0.863448,
+          "duration_seconds": 3108.411927439,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "SKA": {
+              "duration_seconds": 3108.411927439,
+              "utterances": 974
+            },
+            "YBAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "ZHAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            }
+          },
+          "utterances": 974
+        },
+        "train": {
+          "duration_hours": 3.207467,
+          "duration_seconds": 11546.882086165,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 4137.949863944,
+              "utterances": 1027
+            },
+            "SKA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "YBAA": {
+              "duration_seconds": 3949.717006805,
+              "utterances": 1028
+            },
+            "ZHAA": {
+              "duration_seconds": 3459.215215416,
+              "utterances": 1030
+            }
+          },
+          "utterances": 3085
+        },
+        "validation": {
+          "duration_hours": 0.314259,
+          "duration_seconds": 1131.33122449,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 408.359727893,
+              "utterances": 102
+            },
+            "SKA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "YBAA": {
+              "duration_seconds": 383.751519275,
+              "utterances": 102
+            },
+            "ZHAA": {
+              "duration_seconds": 339.219977322,
+              "utterances": 102
+            }
+          },
+          "utterances": 306
+        }
+      }
+    },
+    {
+      "fold_id": "held_out_ybaa",
+      "held_out_speaker": "YBAA",
+      "manifest": "fold_ybaa.csv",
+      "manifest_sha256": "0ca2a3fabcba7f363ae534154c74e2346444e429d37642e5e70e85a377e0ea70",
+      "splits": {
+        "test": {
+          "duration_hours": 1.203741,
+          "duration_seconds": 4333.46852608,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "SKA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "YBAA": {
+              "duration_seconds": 4333.46852608,
+              "utterances": 1130
+            },
+            "ZHAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            }
+          },
+          "utterances": 1130
+        },
+        "train": {
+          "duration_hours": 2.896375,
+          "duration_seconds": 10426.950226755,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 4137.949863944,
+              "utterances": 1027
+            },
+            "SKA": {
+              "duration_seconds": 2829.785147395,
+              "utterances": 886
+            },
+            "YBAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "ZHAA": {
+              "duration_seconds": 3459.215215416,
+              "utterances": 1030
+            }
+          },
+          "utterances": 2943
+        },
+        "validation": {
+          "duration_hours": 0.285057,
+          "duration_seconds": 1026.206485259,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 408.359727893,
+              "utterances": 102
+            },
+            "SKA": {
+              "duration_seconds": 278.626780044,
+              "utterances": 88
+            },
+            "YBAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "ZHAA": {
+              "duration_seconds": 339.219977322,
+              "utterances": 102
+            }
+          },
+          "utterances": 292
+        }
+      }
+    },
+    {
+      "fold_id": "held_out_zhaa",
+      "held_out_speaker": "ZHAA",
+      "manifest": "fold_zhaa.csv",
+      "manifest_sha256": "c30c75050885b809b704b10fecb47ff1b0a01117dab5ea9ff65ace72eb787653",
+      "splits": {
+        "test": {
+          "duration_hours": 1.055121,
+          "duration_seconds": 3798.435192738,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "SKA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "YBAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            },
+            "ZHAA": {
+              "duration_seconds": 3798.435192738,
+              "utterances": 1132
+            }
+          },
+          "utterances": 1132
+        },
+        "train": {
+          "duration_hours": 3.032626,
+          "duration_seconds": 10917.452018144,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 4137.949863944,
+              "utterances": 1027
+            },
+            "SKA": {
+              "duration_seconds": 2829.785147395,
+              "utterances": 886
+            },
+            "YBAA": {
+              "duration_seconds": 3949.717006805,
+              "utterances": 1028
+            },
+            "ZHAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            }
+          },
+          "utterances": 2941
+        },
+        "validation": {
+          "duration_hours": 0.297427,
+          "duration_seconds": 1070.738027212,
+          "speakers": {
+            "ABA": {
+              "duration_seconds": 408.359727893,
+              "utterances": 102
+            },
+            "SKA": {
+              "duration_seconds": 278.626780044,
+              "utterances": 88
+            },
+            "YBAA": {
+              "duration_seconds": 383.751519275,
+              "utterances": 102
+            },
+            "ZHAA": {
+              "duration_seconds": 0,
+              "utterances": 0
+            }
+          },
+          "utterances": 292
+        }
+      }
+    }
+  ],
+  "release": "v5.0",
+  "schema_version": 1,
+  "source_manifest": "l2_arctic_v5_arabic_manifest.csv",
+  "source_manifest_sha256": "f34ddd755be68d49cebaf4c58692ffab964d5e7ba0d2a8f45b0988e48a798b26",
+  "source_records": 4365,
+  "speakers": [
+    "ABA",
+    "SKA",
+    "YBAA",
+    "ZHAA"
+  ],
+  "split_policy": {
+    "algorithm": "sha256-prompt-group-v1",
+    "held_out_speaker_usage": "test only",
+    "namespace": "equivoice:l2-arctic:v5.0:arabic:validation:v1",
+    "test_unit": "speaker",
+    "validation_fraction_threshold": 0.1,
+    "validation_unit": "utterance_id (prompt-grouped across speakers)",
+    "validation_utterance_id_count": 102,
+    "validation_utterance_ids_sha256": "fec41cede360632b162a963a3022cae5e960df58f4763aa7e619b34fc22fd13b"
+  }
+}

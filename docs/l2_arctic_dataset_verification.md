@@ -120,12 +120,12 @@ The `textgrid/` alignments are forced alignments, whereas `annotation/` is the m
 - [x] Transcript UTF-8 readability without normalization or content redistribution
 - [x] Missing, duplicate, empty, or malformed records
 - [x] Exact per-speaker durations
-- [ ] Stable, versioned manifests for the four leave-one-speaker-out folds
+- [x] Stable, versioned manifests for the four leave-one-speaker-out folds
 
 The completed checks are documented in
-[L2-ARCTIC raw-data validation](l2_arctic_raw_validation.md). Fold manifests
-remain a separate next step. No preprocessing or model implementation was
-performed during validation.
+[L2-ARCTIC raw-data validation](l2_arctic_raw_validation.md), and the frozen
+folds are documented in [Experimental splits](experimental_splits.md). No
+preprocessing or model implementation was performed during either step.
 
 ## Primary sources
 
