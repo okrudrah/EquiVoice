@@ -1,0 +1,45 @@
+# Python environments
+.venv/
+venv/
+env/
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Packaging artifacts
+build/
+dist/
+*.egg-info/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+
+# Downloaded datasets are local-only; retain the directory placeholder.
+data/**
+!data/.gitkeep
+
+# Large generated model artifacts should not be committed.
+results/**/checkpoints/
+results/**/*.ckpt
+results/**/*.pt
+results/**/*.pth
+results/**/*.safetensors
+
+# Notebook checkpoints and temporary files
+.ipynb_checkpoints/
+*.tmp
+*.log
