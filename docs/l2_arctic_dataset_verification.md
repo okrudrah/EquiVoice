@@ -1,6 +1,9 @@
 # L2-ARCTIC dataset verification
 
-**Status:** Documentation-only verification completed 2026-08-26. No corpus files were downloaded during this step.
+**Status:** Pre-acquisition documentation completed 2026-08-26. Licensed local
+acquisition and raw-file validation were subsequently completed; see the
+[raw-data validation report](l2_arctic_raw_validation.md). No corpus content is
+tracked in Git.
 
 ## Scope and source hierarchy
 
@@ -107,18 +110,22 @@ The `textgrid/` alignments are forced alignments, whereas `annotation/` is the m
 6. **Limit population claims.** Four speakers cannot represent the diversity of Arabic varieties, English proficiency, gender identities, ages, or speaking contexts. The official public documentation does not provide dialect labels for the four Arabic speakers.
 7. **Keep the test speaker sealed.** File validation may remove unusable samples, but no modeling, hyperparameter, checkpoint, or early-stopping decision may use the held-out speaker.
 
-## Items to verify after licensed acquisition
+## Items verified after licensed acquisition
 
-- Exact archive/release identifier and checksum
-- Actual extracted directory names and file extensions
-- WAV readability, sample rate, channel count, subtype, duration, and clipping
-- One-to-one correspondence among WAV, transcript, forced-alignment, and annotation files
-- Transcript encoding and normalization requirements
-- Missing, duplicate, empty, or malformed records
-- Exact per-speaker durations after validation
-- Stable, versioned manifests for the four leave-one-speaker-out folds
+- [x] Exact archive/release identifier and checksum
+- [x] Actual extracted directory names and file extensions
+- [x] WAV readability, sample rate, channel count, subtype, and duration
+- [x] Full-scale PCM sample scan as a reproducible clipping indicator
+- [x] One-to-one correspondence among WAV, transcript, forced-alignment, and annotation files
+- [x] Transcript UTF-8 readability without normalization or content redistribution
+- [x] Missing, duplicate, empty, or malformed records
+- [x] Exact per-speaker durations
+- [ ] Stable, versioned manifests for the four leave-one-speaker-out folds
 
-No preprocessing or model implementation should begin until these checks are complete.
+The completed checks are documented in
+[L2-ARCTIC raw-data validation](l2_arctic_raw_validation.md). Fold manifests
+remain a separate next step. No preprocessing or model implementation was
+performed during validation.
 
 ## Primary sources
 

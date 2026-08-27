@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-27T03:18:45.101610+00:00",
+  "dataset": "L2-ARCTIC",
+  "release": "v5.0",
+  "cohort": "Arabic L1 scripted speech",
+  "validation_scope": {
+    "speakers": [
+      "ABA",
+      "SKA",
+      "YBAA",
+      "ZHAA"
+    ],
+    "read_only": true,
+    "sample_scan_enabled": true,
+    "expected_sample_rate_hz": 44100,
+    "expected_channels": 1,
+    "expected_format": "WAV",
+    "expected_subtype": "PCM_16",
+    "textgrid_duration_tolerance_seconds": 0.02
+  },
+  "status": "passed",
+  "aggregate": {
+    "speakers": 4,
+    "wav_files": 4365,
+    "transcript_files": 4365,
+    "forced_textgrid_files": 4365,
+    "annotation_files": 599,
+    "duration_seconds": 15786.625238096,
+    "duration_hours": 4.385174,
+    "files_with_full_scale_samples": 39,
+    "errors": 0,
+    "warnings": 1
+  },
+  "archives": [
+    {
+      "path": "archives/l2arctic_release_v5.0.zip",
+      "size_bytes": 7515454814,
+      "sha256": "490d5a43e48b0af84f6bce8e766ad453e8cd670521d5876bb4d0741cca304fda"
+    },
+    {
+      "path": "speaker_archives/ABA.zip",
+      "size_bytes": 349450469,
+      "sha256": "79c2b820946077200908c54972d4562dc9c1e3068519b177e95b4b8e7299509d"
+    },
+    {
+      "path": "speaker_archives/SKA.zip",
+      "size_bytes": 237107659,
+      "sha256": "e435e0feb9c55ddfd85b6beecc2051883c90d64c7dd66dced2deebfb53192929"
+    },
+    {
+      "path": "speaker_archives/YBAA.zip",
+      "size_bytes": 327984671,
+      "sha256": "f5085f11bf39bafe89a4d01af76c883cd24b2fac923dd817592e1ef32e713091"
+    },
+    {
+      "path": "speaker_archives/ZHAA.zip",
+      "size_bytes": 282235574,
+      "sha256": "d902fe8922b027f1a3915335998e25ad2c66216aa98a7e4095598a1687d30ce2"
+    }
+  ],
+  "speakers": [
+    {
+      "speaker": "ABA",
+      "status": "passed",
+      "counts": {
+        "wav": 1129,
+        "transcript": 1129,
+        "textgrid": 1129,
+        "annotation": 150
+      },
+      "audio_properties": {
+        "44100Hz/1ch/WAV/PCM_16": 1129
+      },
+      "duration_seconds": 4546.309591837,
+      "duration_hours": 1.262864,
+      "minimum_utterance_seconds": 0.86,
+      "maximum_utterance_seconds": 8.879591837,
+      "mean_utterance_seconds": 4.026846406,
+      "files_with_full_scale_samples": 39,
+      "full_scale_utterance_ids": [
+        "arctic_a0301",
+        "arctic_a0304",
+        "arctic_a0307",
+        "arctic_a0309",
+        "arctic_a0311",
+        "arctic_a0312",
+        "arctic_a0313",
+        "arctic_a0316",
+        "arctic_a0317",
+        "arctic_a0318",
+        "arctic_a0319",
+        "arctic_a0320",
+        "arctic_a0322",
+        "arctic_a0324",
+        "arctic_a0325",
+        "arctic_a0326",
+        "arctic_a0327",
+        "arctic_a0328",
+        "arctic_a0332",
+        "arctic_a0340",
+        "arctic_a0343",
+        "arctic_a0344",
+        "arctic_a0345",
+        "arctic_a0346",
+        "arctic_a0347",
+        "arctic_a0348",
+        "arctic_b0213",
+        "arctic_b0222",
+        "arctic_b0223",
+        "arctic_b0224",
+        "arctic_b0226",
+        "arctic_b0231",
+        "arctic_b0232",
+        "arctic_b0234",
+        "arctic_b0236",
+        "arctic_b0239",
+        "arctic_b0244",
+        "arctic_b0248",
+        "arctic_b0250"
+      ],
+      "duplicate_audio_groups": [],
+      "errors": [],
+      "warnings": [
+        "39 WAV file(s) contain full-scale samples; this is a clipping indicator, not proof of audible clipping"
+      ]
+    },
+    {
+      "speaker": "SKA",
+      "status": "passed",
+      "counts": {
+        "wav": 974,
+        "transcript": 974,
+        "textgrid": 974,
+        "annotation": 150
+      },
+      "audio_properties": {
+        "44100Hz/1ch/WAV/PCM_16": 974
+      },
+      "duration_seconds": 3108.411927438,
+      "duration_hours": 0.863448,
+      "minimum_utterance_seconds": 0.947868481,
+      "maximum_utterance_seconds": 6.871020408,
+      "mean_utterance_seconds": 3.191388016,
+      "files_with_full_scale_samples": 0,
+      "full_scale_utterance_ids": [],
+      "duplicate_audio_groups": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "speaker": "YBAA",
+      "status": "passed",
+      "counts": {
+        "wav": 1130,
+        "transcript": 1130,
+        "textgrid": 1130,
+        "annotation": 149
+      },
+      "audio_properties": {
+        "44100Hz/1ch/WAV/PCM_16": 1130
+      },
+      "duration_seconds": 4333.468526077,
+      "duration_hours": 1.203741,
+      "minimum_utterance_seconds": 1.01,
+      "maximum_utterance_seconds": 8.61,
+      "mean_utterance_seconds": 3.834927899,
+      "files_with_full_scale_samples": 0,
+      "full_scale_utterance_ids": [],
+      "duplicate_audio_groups": [],
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "speaker": "ZHAA",
+      "status": "passed",
+      "counts": {
+        "wav": 1132,
+        "transcript": 1132,
+        "textgrid": 1132,
+        "annotation": 150
+      },
+      "audio_properties": {
+        "44100Hz/1ch/WAV/PCM_16": 1132
+      },
+      "duration_seconds": 3798.435192744,
+      "duration_hours": 1.055121,
+      "minimum_utterance_seconds": 0.850181406,
+      "maximum_utterance_seconds": 7.66,
+      "mean_utterance_seconds": 3.355508121,
+      "files_with_full_scale_samples": 0,
+      "full_scale_utterance_ids": [],
+      "duplicate_audio_groups": [],
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "warnings": [
+    "ABA: 39 WAV file(s) contain full-scale samples; this is a clipping indicator, not proof of audible clipping"
+  ]
+}

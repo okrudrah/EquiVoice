@@ -23,14 +23,14 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Local Apple Silicon/MPS availability verified
 - [x] Official L2-ARCTIC documentation reviewed
 - [x] Arabic speaker IDs, file counts, annotations, structure, and license documented
-- [ ] Licensed dataset acquisition and extracted-file validation
+- [x] Licensed dataset acquisition and extracted-file validation
 - [ ] Preprocessing and immutable fold manifests
 - [ ] Pretrained Whisper baseline
 - [ ] Accent-specific adaptation
 - [ ] Native-English control evaluation
 - [ ] Linguistic error analysis
 
-No dataset audio, model checkpoints, predictions, or measured results are currently included.
+No dataset audio, model checkpoints, predictions, or model-performance results are included.
 
 ## Verified dataset documentation
 
@@ -44,16 +44,38 @@ See [L2-ARCTIC dataset verification](docs/l2_arctic_dataset_verification.md) for
 - leave-one-speaker-out implications
 - limitations and post-download validation requirements
 
+See [L2-ARCTIC raw-data validation](docs/l2_arctic_raw_validation.md) for the
+measured file correspondence, audio properties, durations, and validation caveats.
+
 ## Repository structure
 
 ```text
 EquiVoice/
 ├── data/          # local-only datasets; ignored by Git
 ├── docs/          # research and dataset documentation
-├── results/       # future lightweight metrics and metadata
-├── src/equivoice/ # future maintainable project code
-└── tests/         # future automated tests
+├── results/       # lightweight validation metadata; no corpus content
+├── src/equivoice/ # maintainable project code
+└── tests/         # automated tests
 ```
+
+## Raw-data validation
+
+The read-only validator checks archive digests, file correspondence, WAV
+readability and properties, transcript and TextGrid readability, TextGrid/audio
+duration agreement, duplicate decoded audio, and full-scale PCM samples.
+
+```bash
+PYTHONPATH=src python -m equivoice.validate_l2_arctic \
+  --dataset-root data/raw/l2_arctic/v5.0 \
+  --report results/data_validation/l2_arctic_v5_arabic_validation.json \
+  --manifest results/data_validation/l2_arctic_v5_arabic_manifest.csv
+```
+
+The completed local v5.0 validation passed for 4,365 scripted recordings with
+zero errors. The machine-readable report records one caution category: 39 ABA
+recordings contain one or more full-scale PCM samples. Those files remain in the
+corpus because this is a clipping indicator, not proof that the recordings are
+unusable.
 
 ## Environment
 
@@ -76,4 +98,7 @@ The corpus itself is not redistributed in this repository. A license for EquiVoi
 
 ## Results
 
-No baseline, fine-tuned, control, or linguistic-analysis results have been measured yet. This section will be updated only after the corresponding experiments are run and verified.
+Raw-data validation metadata is available under `results/data_validation/`. No
+baseline, fine-tuned, control, or linguistic-analysis results have been measured
+yet. This section will be updated only after the corresponding experiments are
+run and verified.
