@@ -102,7 +102,10 @@ def select_device(requested: str) -> str:
     return "cpu"
 
 
-def load_processed_manifest(path: Path) -> list[dict[str, str]]:
+def load_processed_manifest(
+    path: Path,
+    expected_speakers: Iterable[str] | None = EXPECTED_SPEAKERS,
+) -> list[dict[str, str]]:
     with path.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
         fields = set(reader.fieldnames or [])
@@ -113,13 +116,14 @@ def load_processed_manifest(path: Path) -> list[dict[str, str]]:
             )
         records = list(reader)
 
+    allowed_speakers = set(expected_speakers) if expected_speakers is not None else None
     seen: set[tuple[str, str]] = set()
     for row_number, record in enumerate(records, start=2):
         key = (record["speaker"], record["utterance_id"])
         if key in seen:
             raise ValueError(f"duplicate processed row {row_number}: {key}")
         seen.add(key)
-        if record["speaker"] not in EXPECTED_SPEAKERS:
+        if allowed_speakers is not None and record["speaker"] not in allowed_speakers:
             raise ValueError(f"unexpected speaker at row {row_number}: {key[0]}")
         if int(record["processed_sample_rate_hz"]) != TARGET_SAMPLE_RATE:
             raise ValueError(f"unexpected sample rate at row {row_number}")
@@ -388,14 +392,23 @@ def build_public_results(
     run_config: dict[str, Any],
     predictions_path: Path,
     limited: bool,
+    *,
+    speaker_order: Iterable[str] | None = EXPECTED_SPEAKERS,
+    dataset: str = "L2-ARCTIC",
+    release: str = "v5.0",
+    full_scope: str = "full Arabic cohort",
+    evaluation: str = "pretrained baseline",
 ) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     by_speaker: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in rows:
         by_speaker[row["speaker"]].append(row)
 
+    ordered_speakers = (
+        list(speaker_order) if speaker_order is not None else sorted(by_speaker)
+    )
     speakers = [
         {"speaker": speaker, **_metric_summary(by_speaker[speaker])}
-        for speaker in EXPECTED_SPEAKERS
+        for speaker in ordered_speakers
         if by_speaker.get(speaker)
     ]
     aggregate = _metric_summary(rows)
@@ -408,10 +421,10 @@ def build_public_results(
     report = {
         "schema_version": 1,
         "status": "passed",
-        "scope": "limited smoke test" if limited else "full Arabic cohort",
-        "dataset": "L2-ARCTIC",
-        "release": "v5.0",
-        "evaluation": "pretrained baseline",
+        "scope": "limited smoke test" if limited else full_scope,
+        "dataset": dataset,
+        "release": release,
+        "evaluation": evaluation,
         "run_config": run_config,
         "aggregate": aggregate,
         "speakers": speakers,
@@ -436,13 +449,19 @@ def run_baseline(
     seed: int,
     limit: int | None,
     local_files_only: bool,
+    expected_speakers: Iterable[str] | None = EXPECTED_SPEAKERS,
+    dataset: str = "L2-ARCTIC",
+    release: str = "v5.0",
+    full_scope: str = "full Arabic cohort",
+    evaluation: str = "pretrained baseline",
+    run_config_overrides: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if batch_size <= 0:
         raise ValueError("batch_size must be positive")
     if max_new_tokens <= 0:
         raise ValueError("max_new_tokens must be positive")
 
-    records = load_processed_manifest(processed_manifest)
+    records = load_processed_manifest(processed_manifest, expected_speakers)
     if limit is not None:
         if limit <= 0:
             raise ValueError("limit must be positive")
@@ -451,6 +470,14 @@ def run_baseline(
     run_config = build_run_config(
         device, batch_size, max_new_tokens, seed, processed_manifest, limit
     )
+    if run_config_overrides:
+        overlap = set(run_config) & set(run_config_overrides)
+        if overlap:
+            raise ValueError(
+                "run-config overrides conflict with standard fields: "
+                + ", ".join(sorted(overlap))
+            )
+        run_config.update(run_config_overrides)
     config_path = predictions_path.with_suffix(".config.json")
     write_immutable(config_path, _json_bytes(run_config))
 
@@ -526,6 +553,11 @@ def run_baseline(
         run_config,
         predictions_path,
         limited=limit is not None,
+        speaker_order=expected_speakers,
+        dataset=dataset,
+        release=release,
+        full_scope=full_scope,
+        evaluation=evaluation,
     )
     write_immutable(
         public_metrics_path,

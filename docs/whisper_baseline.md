@@ -86,6 +86,7 @@ refuses to overwrite them with changed content.
   hashes.
 - The downloaded model cache is local-only and ignored by Git.
 
-The native-English control baseline has not yet been run. These measurements
-therefore establish Arabic-accented English performance only; they do not yet
-support a fairness comparison or a claim that accent-specific adaptation helps.
+The [native-English control baseline](native_english_control.md) has now been
+measured on the complete LibriSpeech `test-clean` split. Neither baseline alone
+supports a claim that accent-specific adaptation helps; that requires the later
+within-speaker pretrained-versus-adapted comparisons.

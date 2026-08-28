@@ -27,8 +27,8 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Immutable leave-one-speaker-out fold manifests
 - [x] Deterministic 16 kHz mono audio preprocessing
 - [x] Pretrained Whisper baseline for the Arabic L2-ARCTIC cohort
+- [x] Native-English LibriSpeech control baseline
 - [ ] Accent-specific adaptation
-- [ ] Native-English control evaluation
 - [ ] Linguistic error analysis
 
 No dataset audio, model checkpoints, or text-bearing predictions are included.
@@ -61,6 +61,10 @@ amplitude-range caveat.
 See [Pretrained Whisper baseline](docs/whisper_baseline.md) for the pinned model
 revision, deterministic inference configuration, privacy boundary, and measured
 per-speaker and aggregate WER.
+
+See [Native-English control baseline](docs/native_english_control.md) for the
+complete LibriSpeech `test-clean` selection, equivalent preparation policy,
+measured native-control WER, and cross-corpus comparison limitations.
 
 ## Repository structure
 
@@ -150,6 +154,11 @@ Platform-specific training environments, including any later cloud-GPU environme
 
 L2-ARCTIC is distributed by the Texas A&M PSI Lab under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). Access requires reviewing and accepting the official terms through the [L2-ARCTIC corpus page](https://psi.engr.tamu.edu/l2-arctic-corpus/).
 
+LibriSpeech SLR12 is distributed by OpenSLR under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). EquiVoice uses the
+complete official [`test-clean` split](https://www.openslr.org/12/) as its fixed
+native-English control.
+
 The corpus itself is not redistributed in this repository. A license for EquiVoice's future original source code has not yet been selected.
 
 ## Results
@@ -159,10 +168,17 @@ micro-WER** across all 4,365 Arabic-accented English recordings. Per-speaker WER
 was 12.2805% for ABA, 21.3388% for SKA, 10.0158% for YBAA, and 10.5237% for
 ZHAA; the unweighted macro-speaker WER was 13.5397%.
 
+On the complete 2,620-utterance LibriSpeech `test-clean` control, the identical
+checkpoint and evaluation policy achieved **3.0532% micro-WER** and **3.0413%
+macro-speaker WER**. The descriptive cross-corpus difference is 10.2099
+percentage points. It must not be interpreted as a pure causal accent effect
+because the two corpora also differ in speakers, prompts, recording conditions,
+and speech domain.
+
 These are inference-only baseline measurements, not adaptation results. The
 speaker variation has not yet been attributed to pronunciation transfer, audio
-conditions, or another cause. Native-English control, fine-tuned, and
-linguistic-analysis results remain unmeasured.
+conditions, or another cause. Fine-tuned and linguistic-analysis results remain
+unmeasured.
 
 Machine-readable baseline artifacts are under
 `results/baseline/whisper_small_en/`; raw-data validation metadata remains under
