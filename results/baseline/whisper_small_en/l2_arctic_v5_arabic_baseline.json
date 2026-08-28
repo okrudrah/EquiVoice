@@ -1,0 +1,97 @@
+{
+  "aggregate": {
+    "deletions": 392,
+    "errors": 5197,
+    "hits": 34709,
+    "insertions": 722,
+    "macro_speaker_wer": 0.135397147056,
+    "reference_words": 39184,
+    "substitutions": 4083,
+    "utterances": 4365,
+    "wer": 0.132630665578
+  },
+  "dataset": "L2-ARCTIC",
+  "evaluation": "pretrained baseline",
+  "private_predictions_file": "predictions.csv",
+  "private_predictions_sha256": "4ca04ad6ce20ffc6efb3510702e3f4daa834f4d8bf550fa7f25d939eef864db2",
+  "public_utterance_metrics": "l2_arctic_v5_arabic_utterance_metrics.csv",
+  "public_utterance_metrics_contains_text": false,
+  "public_utterance_metrics_sha256": "1339215078b37c4a5409faf3d861d2a8db103b698c9d7070ef7819feb02c3165",
+  "release": "v5.0",
+  "run_config": {
+    "attention_implementation": "eager",
+    "batch_size": 8,
+    "checkpoint_language": "English-only",
+    "decoding": {
+      "do_sample": false,
+      "max_new_tokens": 128,
+      "num_beams": 1,
+      "return_timestamps": false,
+      "strategy": "greedy"
+    },
+    "device": "mps",
+    "dtype": "float32",
+    "language_detection": false,
+    "model_id": "openai/whisper-small.en",
+    "model_revision": "e8727524f962ee844a7319d92be39ac1bd25655a",
+    "normalizer": "Transformers Whisper EnglishTextNormalizer",
+    "processed_manifest": "l2_arctic_v5_arabic_16khz_manifest.csv",
+    "processed_manifest_sha256": "407ae914e0c33ae687ecc8a3b6d8522fdfb47f7b290c33a703209420cfa27a12",
+    "record_limit": null,
+    "sampling_rate_hz": 16000,
+    "schema_version": 1,
+    "seed": 17,
+    "task": "transcription",
+    "torch_version": "2.13.0",
+    "transformers_version": "4.57.6"
+  },
+  "schema_version": 1,
+  "scope": "full Arabic cohort",
+  "speakers": [
+    {
+      "deletions": 88,
+      "errors": 1245,
+      "hits": 9084,
+      "insertions": 191,
+      "reference_words": 10138,
+      "speaker": "ABA",
+      "substitutions": 966,
+      "utterances": 1129,
+      "wer": 0.122805287039
+    },
+    {
+      "deletions": 127,
+      "errors": 1868,
+      "hits": 7176,
+      "insertions": 290,
+      "reference_words": 8754,
+      "speaker": "SKA",
+      "substitutions": 1451,
+      "utterances": 974,
+      "wer": 0.21338816541
+    },
+    {
+      "deletions": 88,
+      "errors": 1015,
+      "hits": 9221,
+      "insertions": 102,
+      "reference_words": 10134,
+      "speaker": "YBAA",
+      "substitutions": 825,
+      "utterances": 1130,
+      "wer": 0.10015788435
+    },
+    {
+      "deletions": 89,
+      "errors": 1069,
+      "hits": 9228,
+      "insertions": 139,
+      "reference_words": 10158,
+      "speaker": "ZHAA",
+      "substitutions": 841,
+      "utterances": 1132,
+      "wer": 0.105237251427
+    }
+  ],
+  "status": "passed"
+}

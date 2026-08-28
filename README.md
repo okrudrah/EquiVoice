@@ -2,7 +2,7 @@
 
 EquiVoice is a research project investigating whether accent-specific adaptation can improve automatic speech recognition for Arabic-accented English on unseen speakers without substantially degrading recognition of native English.
 
-The project combines speaker-independent machine-learning evaluation with phonetic analysis of Arabic-to-English transfer patterns. It is being developed incrementally; no performance results are available yet.
+The project combines speaker-independent machine-learning evaluation with phonetic analysis of Arabic-to-English transfer patterns. It is being developed incrementally; the pretrained Arabic-accented English baseline is now measured, while adaptation and native-control experiments remain pending.
 
 ## Research question
 
@@ -26,12 +26,14 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Licensed dataset acquisition and extracted-file validation
 - [x] Immutable leave-one-speaker-out fold manifests
 - [x] Deterministic 16 kHz mono audio preprocessing
-- [ ] Pretrained Whisper baseline
+- [x] Pretrained Whisper baseline for the Arabic L2-ARCTIC cohort
 - [ ] Accent-specific adaptation
 - [ ] Native-English control evaluation
 - [ ] Linguistic error analysis
 
-No dataset audio, model checkpoints, predictions, or model-performance results are included.
+No dataset audio, model checkpoints, or text-bearing predictions are included.
+The repository contains only aggregate baseline results and text-free
+utterance-level error statistics.
 
 ## Verified dataset documentation
 
@@ -55,6 +57,10 @@ and leakage controls.
 See [Audio preprocessing](docs/audio_preprocessing.md) for the deterministic
 44.1-to-16 kHz transformation, output validation, measured duration drift, and
 amplitude-range caveat.
+
+See [Pretrained Whisper baseline](docs/whisper_baseline.md) for the pinned model
+revision, deterministic inference configuration, privacy boundary, and measured
+per-speaker and aggregate WER.
 
 ## Repository structure
 
@@ -148,7 +154,16 @@ The corpus itself is not redistributed in this repository. A license for EquiVoi
 
 ## Results
 
-Raw-data validation metadata is available under `results/data_validation/`. No
-baseline, fine-tuned, control, or linguistic-analysis results have been measured
-yet. This section will be updated only after the corresponding experiments are
-run and verified.
+The pinned pretrained `openai/whisper-small.en` checkpoint achieved **13.2631%
+micro-WER** across all 4,365 Arabic-accented English recordings. Per-speaker WER
+was 12.2805% for ABA, 21.3388% for SKA, 10.0158% for YBAA, and 10.5237% for
+ZHAA; the unweighted macro-speaker WER was 13.5397%.
+
+These are inference-only baseline measurements, not adaptation results. The
+speaker variation has not yet been attributed to pronunciation transfer, audio
+conditions, or another cause. Native-English control, fine-tuned, and
+linguistic-analysis results remain unmeasured.
+
+Machine-readable baseline artifacts are under
+`results/baseline/whisper_small_en/`; raw-data validation metadata remains under
+`results/data_validation/`.
