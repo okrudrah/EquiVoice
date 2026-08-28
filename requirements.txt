@@ -1,13 +1,14 @@
-# Core machine-learning and speech dependencies for later EquiVoice stages.
-# No model or pipeline code is included in Step 1.
+# Core machine-learning and speech dependencies.
 torch>=2.2,<3
 transformers>=4.40,<5
 datasets>=2.18,<5
+numpy>=2,<3
 librosa>=0.10,<1
 jiwer>=3,<5
 soundfile>=0.12,<1
+soxr>=1,<2
 accelerate>=0.28,<2
 evaluate>=0.4,<1
 
-# Test runner for future unit and integration tests.
+# Test runner for unit and integration tests.
 pytest>=8,<10

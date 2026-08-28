@@ -25,7 +25,7 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Arabic speaker IDs, file counts, annotations, structure, and license documented
 - [x] Licensed dataset acquisition and extracted-file validation
 - [x] Immutable leave-one-speaker-out fold manifests
-- [ ] Audio preprocessing
+- [x] Deterministic 16 kHz mono audio preprocessing
 - [ ] Pretrained Whisper baseline
 - [ ] Accent-specific adaptation
 - [ ] Native-English control evaluation
@@ -51,6 +51,10 @@ measured file correspondence, audio properties, durations, and validation caveat
 See [Experimental splits](docs/experimental_splits.md) for the frozen
 leave-one-speaker-out folds, prompt-grouped validation policy, exact split sizes,
 and leakage controls.
+
+See [Audio preprocessing](docs/audio_preprocessing.md) for the deterministic
+44.1-to-16 kHz transformation, output validation, measured duration drift, and
+amplitude-range caveat.
 
 ## Repository structure
 
@@ -100,6 +104,28 @@ PYTHONPATH=src python -m equivoice.build_loso_manifests \
 The four content-hashed manifests and their summary are under
 `results/manifests/l2_arctic_v5_loso/`. Regeneration is deterministic, and the
 builder refuses to overwrite an existing manifest with different content.
+
+## Audio preprocessing
+
+Validated raw WAVs are decoded as their original signed 16-bit PCM, checked
+against the raw-data hashes, converted to float32, and resampled from 44.1 kHz to
+16 kHz with SoXR high quality. The output remains mono and is stored as float32
+WAV so resampler output is preserved without normalization, clipping, or another
+integer quantization step.
+
+```bash
+PYTHONPATH=src python -m equivoice.preprocess_l2_arctic \
+  --source-root data/raw/l2_arctic/v5.0 \
+  --source-manifest results/data_validation/l2_arctic_v5_arabic_manifest.csv \
+  --validation-report results/data_validation/l2_arctic_v5_arabic_validation.json \
+  --output-root data/processed/l2_arctic/v5.0/16khz_mono_float32_soxr_hq \
+  --processed-manifest results/preprocessing/l2_arctic_v5_arabic_16khz_manifest.csv \
+  --report results/preprocessing/l2_arctic_v5_arabic_16khz_report.json
+```
+
+All 4,365 processed files passed verification. The ignored processed-audio
+directory is local-only; the repository contains only the metadata manifest and
+aggregate report.
 
 ## Environment
 
