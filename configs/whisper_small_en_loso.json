@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "experiment": "l2_arctic_v5_arabic_loso_whisper_small_en",
+  "model_id": "openai/whisper-small.en",
+  "model_revision": "e8727524f962ee844a7319d92be39ac1bd25655a",
+  "seed": 17,
+  "sampling_rate_hz": 16000,
+  "decoding": {
+    "strategy": "greedy",
+    "do_sample": false,
+    "num_beams": 1,
+    "max_new_tokens": 128,
+    "return_timestamps": false,
+    "language_detection": false
+  },
+  "training": {
+    "method": "full_fine_tuning",
+    "num_train_epochs": 5,
+    "per_device_train_batch_size": 4,
+    "per_device_eval_batch_size": 8,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "learning_rate": 0.00001,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.05,
+    "lr_scheduler_type": "linear",
+    "max_grad_norm": 1.0,
+    "optimizer": "adamw_torch",
+    "gradient_checkpointing": true,
+    "evaluation_strategy": "steps",
+    "evaluation_steps": 100,
+    "checkpoint_strategy": "steps",
+    "checkpoint_steps": 100,
+    "checkpoint_limit": 2,
+    "logging_steps": 25,
+    "load_best_model_at_end": true,
+    "best_model_metric": "wer",
+    "greater_is_better": false,
+    "mixed_precision": "fp16_cuda_only"
+  },
+  "smoke_test": {
+    "train_examples": 2,
+    "validation_examples": 2,
+    "max_optimizer_steps": 1,
+    "per_device_batch_size": 1
+  }
+}

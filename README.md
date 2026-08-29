@@ -2,7 +2,7 @@
 
 EquiVoice is a research project investigating whether accent-specific adaptation can improve automatic speech recognition for Arabic-accented English on unseen speakers without substantially degrading recognition of native English.
 
-The project combines speaker-independent machine-learning evaluation with phonetic analysis of Arabic-to-English transfer patterns. It is being developed incrementally; the pretrained Arabic-accented English baseline is now measured, while adaptation and native-control experiments remain pending.
+The project combines speaker-independent machine-learning evaluation with phonetic analysis of Arabic-to-English transfer patterns. It is being developed incrementally; the pretrained Arabic-accented English and native-English control baselines are measured, and the adaptation pipeline is now set up but has not completed full training.
 
 ## Research question
 
@@ -28,6 +28,7 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Deterministic 16 kHz mono audio preprocessing
 - [x] Pretrained Whisper baseline for the Arabic L2-ARCTIC cohort
 - [x] Native-English LibriSpeech control baseline
+- [x] Leakage-safe fine-tuning pipeline and one-step local smoke test
 - [ ] Accent-specific adaptation
 - [ ] Linguistic error analysis
 
@@ -65,6 +66,10 @@ per-speaker and aggregate WER.
 See [Native-English control baseline](docs/native_english_control.md) for the
 complete LibriSpeech `test-clean` selection, equivalent preparation policy,
 measured native-control WER, and cross-corpus comparison limitations.
+
+See [Whisper fine-tuning setup](docs/fine_tuning_setup.md) for the frozen
+four-fold training configuration, data-integrity and leakage safeguards, local
+smoke test, CUDA command, checkpoint policy, and remaining work.
 
 ## Repository structure
 
