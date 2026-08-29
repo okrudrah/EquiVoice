@@ -1,0 +1,17 @@
+# Install the CUDA build of PyTorch first. The matching command is documented in
+# docs/cuda_training_handoff.md and pinned in configs/cuda_environment.json.
+# PyTorch is intentionally not repeated here so pip cannot replace that CUDA
+# wheel with a different platform build.
+
+accelerate==1.14.0
+datasets==4.8.5
+evaluate==0.4.6
+jiwer==4.0.0
+librosa==0.11.0
+numpy==2.5.2
+pandas==3.0.5
+pytest==9.1.1
+safetensors==0.8.0
+soundfile==0.14.0
+soxr==1.1.0
+transformers==4.57.6

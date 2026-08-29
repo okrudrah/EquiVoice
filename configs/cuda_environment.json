@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "purpose": "EquiVoice full Whisper fine-tuning on one NVIDIA GPU",
+  "operating_system": "Linux",
+  "python_major_minor": "3.12",
+  "torch_version": "2.13.0",
+  "pytorch_wheel_index": "https://download.pytorch.org/whl/cu126",
+  "pytorch_cuda_runtime": "12.6",
+  "minimum_gpu_memory_gib": 14,
+  "recommended_gpu_memory_gib": 22,
+  "required_packages": {
+    "accelerate": "1.14.0",
+    "datasets": "4.8.5",
+    "evaluate": "0.4.6",
+    "jiwer": "4.0.0",
+    "librosa": "0.11.0",
+    "numpy": "2.5.2",
+    "pandas": "3.0.5",
+    "pytest": "9.1.1",
+    "safetensors": "0.8.0",
+    "soundfile": "0.14.0",
+    "soxr": "1.1.0",
+    "transformers": "4.57.6"
+  }
+}

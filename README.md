@@ -29,6 +29,7 @@ Can accent-specific adaptation improve Whisper's recognition of Arabic-accented 
 - [x] Pretrained Whisper baseline for the Arabic L2-ARCTIC cohort
 - [x] Native-English LibriSpeech control baseline
 - [x] Leakage-safe fine-tuning pipeline and one-step local smoke test
+- [x] Provider-neutral CUDA preflight and dry-run training launcher
 - [ ] Accent-specific adaptation
 - [ ] Linguistic error analysis
 
@@ -70,6 +71,10 @@ measured native-control WER, and cross-corpus comparison limitations.
 See [Whisper fine-tuning setup](docs/fine_tuning_setup.md) for the frozen
 four-fold training configuration, data-integrity and leakage safeguards, local
 smoke test, CUDA command, checkpoint policy, and remaining work.
+
+See [CUDA training handoff](docs/cuda_training_handoff.md) for the pinned Linux
+environment, private minimum-data transfer, mandatory GPU preflight, safe
+dry-run launcher, checkpoint resume boundary, and post-training evaluation plan.
 
 ## Repository structure
 
