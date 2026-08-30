@@ -518,6 +518,9 @@ def build_training_arguments(
         max_grad_norm=float(training["max_grad_norm"]),
         optim=training["optimizer"],
         gradient_checkpointing=bool(training["gradient_checkpointing"]),
+        gradient_checkpointing_kwargs={"use_reentrant": False}
+        if bool(training["gradient_checkpointing"])
+        else None,
         eval_strategy=training["evaluation_strategy"],
         eval_steps=int(training["evaluation_steps"]),
         save_strategy=training["checkpoint_strategy"],

@@ -268,6 +268,19 @@ def test_full_training_is_restricted_to_cuda() -> None:
         select_device("cpu", smoke_test=False)
 
 
+def test_full_training_uses_non_reentrant_gradient_checkpointing(
+    tmp_path: Path,
+) -> None:
+    config = load_training_config(ROOT / "configs/whisper_small_en_loso.json")
+
+    arguments = training.build_training_arguments(
+        tmp_path, config, device="cpu", smoke_test=False
+    )
+
+    assert arguments.gradient_checkpointing is True
+    assert arguments.gradient_checkpointing_kwargs == {"use_reentrant": False}
+
+
 def test_full_fine_tuning_rejects_unexpected_frozen_parameter() -> None:
     model = torch.nn.Sequential(torch.nn.Linear(2, 2))
     model[0].weight.requires_grad = False
